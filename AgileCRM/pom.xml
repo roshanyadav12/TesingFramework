@@ -5,6 +5,19 @@
 	<groupId>org.evs.qacodes.agileCrm</groupId>
 	<artifactId>AgileCRM</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
@@ -26,6 +39,17 @@
 			<version>20240303</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.0.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 
 	</dependencies>
 </project>
