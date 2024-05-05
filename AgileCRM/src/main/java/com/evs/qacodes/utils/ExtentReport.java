@@ -3,6 +3,7 @@ package com.evs.qacodes.utils;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
+
 import com.aventstack.extentreports.AnalysisStrategy;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -54,8 +55,10 @@ public class ExtentReport {
 	}
 
 	public static synchronized ExtentTest startTest(String module, String testCase, String... params) {
+        ExtentTest extentModule =getModule(module);
 		String testCaseDescription = MessageFormat.format(testCase, params);
-		ExtentTest tests=test.createNode(testCaseDescription);
+		ExtentTest test =extentModule.createNode(testCaseDescription);
+        set((Long) (Thread.currentThread().getId()), test);
 		return test;
 	}
 
@@ -74,17 +77,22 @@ public class ExtentReport {
 		}
 
 	}
-//	 private static Map<Integer, ExtentTest> reporterMap = new HashMap<Integer, ExtentTest>();
-//
-//	    public static ExtentTest get(long l) {
-//	        return reporterMap.get(l);
-//	    }
-//
-//	    public static void set(Integer integer, ExtentTest test) {
-//	        reporterMap.put(integer, test);
+	 private static Map<Long, ExtentTest> reporterMap = new HashMap<Long, ExtentTest>();
+
+	    public static ExtentTest get(long l) {
+	        return reporterMap.get(l);
+	    }
+
+	    public static void set(Long integer, ExtentTest test) {
+	        reporterMap.put(integer, test);
+	    }
+//	    public static synchronized ExtentTest getTest() {
+//	        return test;
 //	    }
 	    public static synchronized ExtentTest getTest() {
-	        return test;
+	    	long getCurrentThread=Thread.currentThread().getId();
+	        test= get(getCurrentThread);
+	         return test;
 	    }
 	    public static synchronized void step(String log) {
 	        ExtentTest test = getTest();
