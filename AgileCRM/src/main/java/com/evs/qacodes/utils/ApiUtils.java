@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.http.HttpStatus;
 import org.json.JSONObject;
 
-import framework.utils.logManagement.APIResponseFilter;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;

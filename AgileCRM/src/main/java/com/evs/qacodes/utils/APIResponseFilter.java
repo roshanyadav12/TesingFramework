@@ -1,4 +1,4 @@
-package framework.utils.logManagement;
+package com.evs.qacodes.utils;
 
 import java.io.PrintStream;
 import java.io.StringWriter;
@@ -9,7 +9,6 @@ import org.apache.commons.io.output.WriterOutputStream;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.evs.qacodes.utils.ExtentReport;
 
 import io.restassured.filter.Filter;
 import io.restassured.filter.FilterContext;
